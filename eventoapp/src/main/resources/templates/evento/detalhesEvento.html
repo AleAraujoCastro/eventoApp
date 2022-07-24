@@ -16,27 +16,15 @@
 
 
 <bory>
-	<h1>Lista de Eventos</h1>
-	<h3><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i> Cadastrar Evento </a></h3>
+	<h1>Evento</h1>
+		<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i> Lista de Eventos </a></h3>
+		<div th:each="evento : ${evento}" class="container">
+			<div class="row">
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Horário: <span th:text="${evento.horario}"></span></p>
 	
-	<table class="container">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horário</th>
-			</tr>
-		</thead>
-		<tbory>
-	<tr th:each="evento : ${eventos}">		
-			<td><a th:href="${(#mvc.url('EC#detalharEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
-			<td><span th:text="${evento.local}"></span></td>
-			<td><span th:text="${evento.data}"></span></td>
-			<td><span th:text="${evento.horario}"></span></td>		
-		</tr>
-		</tbory>
-	</table>
 	
 	
 	<!--JavaScript at end of body for optimized loading-->
