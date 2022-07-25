@@ -1,6 +1,8 @@
 package com.eventoapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -8,14 +10,22 @@ import javax.persistence.ManyToOne;
 public class Convidado {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
 	private String rg;
 	private String nomeConvidado;
 	
 	
 	@ManyToOne
 	private Evento evento;
+		
 	
-	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getRg() {
 		return rg;
 	}
