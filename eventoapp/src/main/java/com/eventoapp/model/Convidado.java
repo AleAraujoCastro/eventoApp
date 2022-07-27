@@ -5,14 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Convidado {
 
 	@Id
+	@NotEmpty
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String rg;
+	
+	@NotEmpty
 	private String nomeConvidado;
 	
 	

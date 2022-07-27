@@ -1,5 +1,6 @@
 package com.eventoapp.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,10 +49,15 @@ public class EventoController {
 	
 	
 	@RequestMapping(value="/{codigo}", method=RequestMethod.GET)
-	public ModelAndView detalharEvento(@PathVariable("codigo") long codigo) {
-		Evento evento = er.findByCodigo(codigo);
+	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
+		Evento eventos = er.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
-		mv.addObject("evento", evento);
+		mv.addObject("eventos", eventos);
+		
+		
+		Iterable<Convidado> convidados = cr.findByEvento(eventos);
+		mv.addObject("convidados", convidados);
+		
 		return mv;
 		
 	}
